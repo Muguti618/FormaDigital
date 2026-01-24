@@ -1,0 +1,1675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Antic Pitarra | Authentic Spanish Tapas & Paella</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ====== CSS RESET & VARIABLES ====== */
+    :root {
+      --chocolate: #2C1810;
+      --espresso: #3A2318;
+      --caramel: #5D4037;
+      --walnut: #8B7355;
+      --hazelnut: #A1887F;
+      --cream: #F5F1E8;
+      --parchment: #E8DFD0;
+      --gold: #D4AF37;
+      --bronze: #B8860B;
+      --accent: #8B7355;
+      --shadow: rgba(44, 24, 16, 0.3);
+      --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background-color: var(--chocolate);
+      color: var(--cream);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 3.2rem;
+      margin-bottom: 1.5rem;
+      color: var(--cream);
+      position: relative;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 120px;
+      height: 3px;
+      background: var(--gold);
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--parchment);
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 2rem auto 4rem;
+      font-weight: 300;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.2rem;
+      border-radius: 2px;
+      border: none;
+      background: var(--gold);
+      color: var(--chocolate);
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-family: 'Inter', sans-serif;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: 0.5s;
+    }
+
+    .btn:hover::before {
+      left: 100%;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
+      background: var(--bronze);
+      color: var(--cream);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 1.5px solid var(--gold);
+      color: var(--gold);
+    }
+
+    .btn-outline:hover {
+      background: var(--gold);
+      color: var(--chocolate);
+    }
+
+    /* ====== NAVBAR ====== */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(44, 24, 16, 0.95);
+      backdrop-filter: blur(10px);
+      z-index: 1000;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+      transition: var(--transition);
+      border-bottom: 1px solid rgba(139, 115, 85, 0.2);
+    }
+
+    header.scrolled {
+      padding: 0.2rem 0;
+    }
+
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--cream);
+      letter-spacing: 2px;
+    }
+
+    .logo i {
+      font-size: 2rem;
+      color: var(--gold);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2.5rem;
+      align-items: center;
+    }
+
+    nav li {
+      position: relative;
+      cursor: pointer;
+      font-weight: 500;
+      padding: 0.5rem 0;
+      transition: color 0.3s ease;
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+
+    nav li::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--gold);
+      transition: width 0.3s ease;
+    }
+
+    nav li:hover::after {
+      width: 100%;
+    }
+
+    nav li:hover {
+      color: var(--gold);
+    }
+
+    /* Make the Reserve button blend better */
+    .reserve-nav-btn {
+      padding: 0.6rem 1.5rem !important;
+      font-size: 0.85rem !important;
+      margin-left: 0.5rem;
+      border: 1.5px solid var(--gold);
+    }
+
+    .reserve-nav-btn:hover {
+      background: var(--gold);
+      color: var(--chocolate);
+    }
+
+    .mobile-menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--gold);
+      font-size: 1.8rem;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    /* ====== HERO SECTION ====== */
+    .hero {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+          rgba(44, 24, 16, 0.85),
+          rgba(58, 35, 24, 0.9)
+        ),
+        url('https://images.unsplash.com/photo-1578474846511-04ba529f0b88?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') center/cover no-repeat;
+      z-index: -1;
+    }
+
+    .hero-content {
+      max-width: 800px;
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    .hero h1 {
+      font-size: 4.5rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.1;
+      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .hero p {
+      font-size: 1.4rem;
+      margin-bottom: 3rem;
+      color: var(--parchment);
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    /* ====== FEATURES SECTION ====== */
+    .features {
+      padding: 8rem 0;
+      background: var(--espresso);
+      position: relative;
+    }
+
+    .features::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%238b7355' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 3rem;
+      margin-top: 4rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .feature-card {
+      background: rgba(93, 64, 55, 0.5);
+      padding: 3rem 2rem;
+      border-radius: 4px;
+      text-align: center;
+      transition: var(--transition);
+      opacity: 0;
+      transform: translateY(30px);
+      border: 1px solid rgba(139, 115, 85, 0.3);
+      backdrop-filter: blur(10px);
+    }
+
+    .feature-card.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+      border-color: var(--gold);
+    }
+
+    .feature-icon {
+      font-size: 3.5rem;
+      color: var(--gold);
+      margin-bottom: 2rem;
+    }
+
+    .feature-card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 1.5rem;
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    .feature-card p {
+      color: var(--parchment);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+    }
+
+    /* ====== MENU SECTION ====== */
+    .menu-section {
+      padding: 8rem 0;
+      background: var(--chocolate);
+    }
+
+    .menu-categories {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+    }
+
+    .category-btn {
+      padding: 0.8rem 2rem;
+      background: transparent;
+      border: 1.5px solid var(--walnut);
+      color: var(--walnut);
+      border-radius: 2px;
+      cursor: pointer;
+      transition: var(--transition);
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+    }
+
+    .category-btn.active, .category-btn:hover {
+      background: var(--walnut);
+      color: var(--chocolate);
+      border-color: var(--walnut);
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 3rem;
+    }
+
+    .menu-item {
+      background: var(--espresso);
+      border-radius: 4px;
+      overflow: hidden;
+      transition: var(--transition);
+      opacity: 0;
+      transform: translateY(30px);
+      border: 1px solid rgba(139, 115, 85, 0.3);
+    }
+
+    .menu-item.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .menu-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+      border-color: var(--gold);
+    }
+
+    .menu-item img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      transition: transform 0.8s ease;
+    }
+
+    .menu-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .menu-item-content {
+      padding: 2.5rem;
+    }
+
+    .menu-item-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 1.2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(139, 115, 85, 0.3);
+    }
+
+    .menu-item h3 {
+      color: var(--cream);
+      font-size: 1.5rem;
+      font-weight: 500;
+      flex: 1;
+    }
+
+    .price {
+      color: var(--gold);
+      font-size: 1.6rem;
+      font-weight: 600;
+      margin-left: 1rem;
+      white-space: nowrap;
+    }
+
+    .price::before {
+      content: '€';
+      font-size: 1.4rem;
+    }
+
+    .menu-item p {
+      color: var(--parchment);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+    }
+
+    /* ====== ABOUT SECTION ====== */
+    .about-section {
+      padding: 8rem 0;
+      background: var(--espresso);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 5rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .about-image {
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(139, 115, 85, 0.3);
+      position: relative;
+    }
+
+    .about-image::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, transparent 0%, rgba(44, 24, 16, 0.2) 100%);
+      z-index: 1;
+    }
+
+    .about-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.8s ease;
+    }
+
+    .about-image:hover img {
+      transform: scale(1.05);
+    }
+
+    .about-content h3 {
+      font-size: 2.5rem;
+      margin-bottom: 2rem;
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    .about-content p {
+      margin-bottom: 1.8rem;
+      color: var(--parchment);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.8;
+    }
+
+    .stats {
+      display: flex;
+      gap: 3rem;
+      margin-top: 3rem;
+    }
+
+    .stat {
+      text-align: center;
+      flex: 1;
+    }
+
+    .stat-number {
+      font-size: 3rem;
+      font-weight: 600;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--parchment);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ====== TESTIMONIALS ====== */
+    .testimonials {
+      padding: 8rem 0;
+      background: var(--chocolate);
+    }
+
+    .testimonial-slider {
+      max-width: 800px;
+      margin: 4rem auto 0;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .testimonial {
+      background: var(--espresso);
+      padding: 4rem;
+      border-radius: 4px;
+      text-align: center;
+      display: none;
+      animation: fadeIn 0.8s ease;
+      border: 1px solid rgba(139, 115, 85, 0.3);
+    }
+
+    .testimonial.active {
+      display: block;
+    }
+
+    .testimonial-text {
+      font-size: 1.4rem;
+      font-style: italic;
+      margin-bottom: 3rem;
+      color: var(--cream);
+      line-height: 1.8;
+      font-weight: 300;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+    }
+
+    .author-avatar {
+      width: 70px;
+      height: 70px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid var(--gold);
+    }
+
+    .author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .author-info h4 {
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+      font-size: 1.3rem;
+    }
+
+    .author-info p {
+      color: var(--parchment);
+      font-size: 0.9rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    .slider-controls {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 3rem;
+    }
+
+    .slider-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--caramel);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .slider-dot.active {
+      background: var(--gold);
+      transform: scale(1.2);
+    }
+
+    /* ====== RESERVATION ====== */
+    .reservation {
+      padding: 8rem 0;
+      background: var(--espresso);
+      text-align: center;
+      position: relative;
+    }
+
+    .reservation-form {
+      max-width: 800px;
+      margin: 4rem auto 0;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      background: rgba(93, 64, 55, 0.5);
+      padding: 3rem;
+      border-radius: 4px;
+      border: 1px solid rgba(139, 115, 85, 0.3);
+    }
+
+    .form-group {
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.8rem;
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 1rem 1.2rem;
+      background: rgba(44, 24, 16, 0.7);
+      border: 1px solid rgba(139, 115, 85, 0.5);
+      border-radius: 2px;
+      color: var(--cream);
+      font-size: 1rem;
+      transition: var(--transition);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .form-group input:focus, .form-group select:focus {
+      outline: none;
+      border-color: var(--gold);
+      box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+    }
+
+    /* ====== CONTACT & FOOTER ====== */
+    .contact-section {
+      padding: 8rem 0;
+      background: var(--chocolate);
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 5rem;
+    }
+
+    .contact-info h3, .hours h3 {
+      font-size: 2rem;
+      margin-bottom: 2rem;
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    .contact-details {
+      margin-top: 2.5rem;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .contact-icon {
+      width: 50px;
+      height: 50px;
+      background: var(--caramel);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+      color: var(--gold);
+      flex-shrink: 0;
+    }
+
+    .contact-item-content h4 {
+      color: var(--gold);
+      margin-bottom: 0.3rem;
+      font-size: 1.1rem;
+    }
+
+    .contact-item-content p {
+      color: var(--parchment);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .hours-list {
+      list-style: none;
+    }
+
+    .hours-list li {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem 0;
+      border-bottom: 1px solid rgba(139, 115, 85, 0.3);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .hours-list li:last-child {
+      border-bottom: none;
+    }
+
+    .day {
+      color: var(--cream);
+    }
+
+    .hours-list li span:last-child {
+      color: var(--parchment);
+    }
+
+    /* ====== FOOTER ====== */
+    footer {
+      background: #1A0F0A;
+      padding: 5rem 0 2rem;
+      margin-top: 4rem;
+      border-top: 1px solid rgba(139, 115, 85, 0.3);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-logo {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: var(--cream);
+      margin-bottom: 1.5rem;
+      letter-spacing: 2px;
+    }
+
+    .footer-logo i {
+      color: var(--gold);
+      margin-right: 10px;
+    }
+
+    .footer-about p {
+      margin-bottom: 2rem;
+      color: var(--parchment);
+      font-family: 'Inter', sans-serif;
+      line-height: 1.7;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      width: 45px;
+      height: 45px;
+      background: var(--espresso);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+      border: 1px solid rgba(139, 115, 85, 0.3);
+    }
+
+    .social-links a:hover {
+      background: var(--gold);
+      color: var(--chocolate);
+      transform: translateY(-5px);
+    }
+
+    .footer-links h4, .footer-newsletter h4 {
+      font-size: 1.3rem;
+      margin-bottom: 1.8rem;
+      color: var(--cream);
+      font-weight: 500;
+    }
+
+    .footer-links ul {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      color: var(--parchment);
+      transition: var(--transition);
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold);
+      padding-left: 5px;
+    }
+
+    .footer-links a i {
+      font-size: 0.8rem;
+      color: var(--gold);
+    }
+
+    .newsletter-form {
+      display: flex;
+      margin-top: 1.5rem;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 0.9rem 1.2rem;
+      background: var(--espresso);
+      border: 1px solid rgba(139, 115, 85, 0.5);
+      border-right: none;
+      color: var(--cream);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .newsletter-form button {
+      padding: 0 1.8rem;
+      background: var(--gold);
+      color: var(--chocolate);
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: var(--transition);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .newsletter-form button:hover {
+      background: var(--bronze);
+      color: var(--cream);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 3rem;
+      border-top: 1px solid rgba(139, 115, 85, 0.3);
+      color: var(--parchment);
+      font-size: 0.9rem;
+      font-family: 'Inter', sans-serif;
+    }
+
+    /* ====== ANIMATIONS ====== */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    /* ====== RESPONSIVE ====== */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+      
+      .section-title {
+        font-size: 2.8rem;
+      }
+
+      .stats {
+        flex-direction: column;
+        gap: 2rem;
+      }
+      
+      .stat-number {
+        font-size: 2.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .mobile-menu-btn {
+        display: block;
+      }
+
+      nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 300px;
+        height: 100vh;
+        background: var(--espresso);
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding-top: 100px;
+        transition: right 0.5s ease;
+        box-shadow: -5px 0 20px rgba(0, 0, 0, 0.3);
+        z-index: 1000;
+        border-left: 1px solid rgba(139, 115, 85, 0.3);
+      }
+
+      nav ul.active {
+        right: 0;
+      }
+
+      .hero h1 {
+        font-size: 3rem;
+      }
+
+      .hero p {
+        font-size: 1.2rem;
+      }
+
+      .hero-btns {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 300px;
+        text-align: center;
+      }
+
+      .section-title {
+        font-size: 2.4rem;
+      }
+
+      .reservation-form {
+        padding: 2rem;
+      }
+
+      .reserve-nav-btn {
+        margin-left: 0;
+        margin-top: 1rem;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .section-title {
+        font-size: 2rem;
+      }
+      
+      .container {
+        padding: 0 1.5rem;
+      }
+
+      .testimonial {
+        padding: 2.5rem 1.5rem;
+      }
+
+      .menu-item-content {
+        padding: 1.8rem;
+      }
+
+      .feature-card {
+        padding: 2.5rem 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header id="header">
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">
+          <i class="fas fa-wine-glass-alt"></i>
+          <span>Antic Pitarra</span>
+        </a>
+        
+        <button class="mobile-menu-btn">
+          <i class="fas fa-bars"></i>
+        </button>
+        
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#menu">Menu</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="#reservation" class="btn reserve-nav-btn">Reserve</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO SECTION -->
+  <section class="hero" id="home">
+    <div class="hero-content">
+      <h1>Authentic Spanish Cuisine</h1>
+      <p>Traditional tapas, paella, and Mediterranean flavors in the heart of Barcelona's Gothic Quarter.</p>
+      <div class="hero-btns">
+        <a href="#menu" class="btn">View Our Menu</a>
+        <a href="#reservation" class="btn btn-outline">Book a Table</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <div class="container">
+      <h2 class="section-title">Why Choose Antic Pitarra</h2>
+      <p class="section-subtitle">We're committed to providing an authentic Spanish dining experience with a focus on tradition and quality.</p>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-history"></i>
+          </div>
+          <h3>Traditional Recipes</h3>
+          <p>Family recipes passed down through generations since 1920.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-fish"></i>
+          </div>
+          <h3>Fresh Mediterranean</h3>
+          <p>Daily seafood from the Mediterranean coast and local markets.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-wine-bottle"></i>
+          </div>
+          <h3>Spanish Wines</h3>
+          <p>Curated selection of wines from Catalonia and across Spain.</p>
+        </div>
+        
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-award"></i>
+          </div>
+          <h3>Award Winning</h3>
+          <p>Recognized as one of Barcelona's top traditional restaurants.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MENU SECTION -->
+  <section class="menu-section" id="menu">
+    <div class="container">
+      <h2 class="section-title">Our Traditional Menu</h2>
+      <p class="section-subtitle">Discover our chef's selection of authentic Spanish dishes crafted with the finest ingredients.</p>
+      
+      <div class="menu-categories">
+        <button class="category-btn active" data-category="all">All Items</button>
+        <button class="category-btn" data-category="tapas">Tapas</button>
+        <button class="category-btn" data-category="paella">Paella</button>
+        <button class="category-btn" data-category="main">Main Courses</button>
+        <button class="category-btn" data-category="drinks">Drinks</button>
+      </div>
+      
+      <div class="menu-grid">
+        <!-- Tapas -->
+        <div class="menu-item" data-category="tapas">
+          <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1860&q=80" alt="Spanish Tapas">
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <h3>Traditional Tapas Selection</h3>
+              <span class="price">18</span>
+            </div>
+            <p>Patatas bravas, croquetas, jamón ibérico, gambas al ajillo, pan con tomate.</p>
+          </div>
+        </div>
+        
+        <div class="menu-item" data-category="tapas">
+          <img src="https://images.unsplash.com/photo-1594041680534-e8c8cdebd659?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Jamón Ibérico">
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <h3>Jamón Ibérico de Bellota</h3>
+              <span class="price">24</span>
+            </div>
+            <p>Acorn-fed Iberian ham, hand-sliced to order with pan con tomate.</p>
+          </div>
+        </div>
+        
+        <!-- Paella -->
+     <!-- Paella de Mariscos -->
+<div class="menu-item" data-category="paella">
+  <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA==&auto=format&fit=crop&w=1860&q=80" alt="Paella de Mariscos">
+  <div class="menu-item-content">
+    <div class="menu-item-header">
+      <h3>Paella de Mariscos</h3>
+      <span class="price">32</span>
+    </div>
+    <p>Traditional seafood paella with shrimp, mussels, clams, and squid.</p>
+  </div>
+</div>
+        
+       <!-- Paella Valenciana -->
+<div class="menu-item" data-category="paella">
+  <img src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA==&auto=format&fit=crop&w=1860&q=80" alt="Paella Valenciana">
+  <div class="menu-item-content">
+    <div class="menu-item-header">
+      <h3>Paella Valenciana</h3>
+      <span class="price">28</span>
+    </div>
+    <p>Authentic Valencian paella with chicken, rabbit, and vegetables.</p>
+  </div>
+</div>
+        
+        <!-- Main Courses -->
+        <div class="menu-item" data-category="main">
+          <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Grilled Meat">
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <h3>Entrecot a la Parrilla</h3>
+              <span class="price">34</span>
+            </div>
+            <p>Grilled ribeye steak with roasted peppers and patatas bravas.</p>
+          </div>
+        </div>
+        
+        <div class="menu-item" data-category="main">
+          <img src="https://images.unsplash.com/photo-1563379926898-05f4575a45d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Grilled Fish">
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <h3>Bacalao al Pil-pil</h3>
+              <span class="price">26</span>
+            </div>
+            <p>Codfish cooked in garlic and olive oil emulsion with potatoes.</p>
+          </div>
+        </div>
+        
+        <!-- Drinks -->
+        <div class="menu-item" data-category="drinks">
+          <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sangria">
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <h3>Sangria de la Casa</h3>
+              <span class="price">16</span>
+            </div>
+            <p>Traditional Spanish sangria with red wine, fruit, and brandy.</p>
+          </div>
+        </div>
+        
+        <div class="menu-item" data-category="drinks">
+          <img src="https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Wine Selection">
+          <div class="menu-item-content">
+            <div class="menu-item-header">
+              <h3>Spanish Wine Flight</h3>
+              <span class="price">22</span>
+            </div>
+            <p>Three 3oz pours of Spanish wines from Rioja, Ribera, and Priorat.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <h2 class="section-title">Our Story</h2>
+      <p class="section-subtitle">Antic Pitarra was born from a passion for authentic Spanish cuisine and family tradition.</p>
+      
+      <div class="about-container">
+        <div class="about-image">
+          <img src="https://images.unsplash.com/photo-1559329007-40df8a9345d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1887&q=80" alt="Our Restaurant Interior">
+        </div>
+        
+        <div class="about-content">
+          <h3>Since 1920 in Barcelona's Gothic Quarter</h3>
+          <p>Founded in 1920 by the Pitarra family, our restaurant began as a small tavern serving traditional Catalan dishes to locals in the Gothic Quarter.</p>
+          <p>Today, we're proud to continue the family legacy, serving authentic Spanish cuisine with recipes passed down through four generations.</p>
+          <p>Our kitchen is led by Chef Javier Martínez, who combines traditional techniques with the finest local ingredients from Catalan markets.</p>
+          
+          <div class="stats">
+            <div class="stat">
+              <span class="stat-number" data-target="103">0</span>
+              <span class="stat-label">Years of Tradition</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" data-target="4">0</span>
+              <span class="stat-label">Generations</span>
+            </div>
+            <div class="stat">
+              <span class="stat-number" data-target="15">0</span>
+              <span class="stat-label">Local Suppliers</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials" id="testimonials">
+    <div class="container">
+      <h2 class="section-title">What Our Guests Say</h2>
+      <p class="section-subtitle">Don't just take our word for it - hear from our satisfied guests.</p>
+      
+      <div class="testimonial-slider">
+        <div class="testimonial active">
+          <p class="testimonial-text">"The most authentic Spanish dining experience I've had outside of Spain. The paella was perfect, and the atmosphere transported me straight to Barcelona."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Maria Gonzalez">
+            </div>
+            <div class="author-info">
+              <h4>Maria Gonzalez</h4>
+              <p>From Madrid, visiting Barcelona</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial">
+          <p class="testimonial-text">"As a Barcelona native, I can say this is one of the few places that still makes traditional tapas the right way. The jamón ibérico is exceptional."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Carlos Ruiz">
+            </div>
+            <div class="author-info">
+              <h4>Carlos Ruiz</h4>
+              <p>Local Food Critic</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="testimonial">
+          <p class="testimonial-text">"We celebrated our anniversary here and everything was perfect. The service, the food, the wine selection - an unforgettable experience."</p>
+          <div class="testimonial-author">
+            <div class="author-avatar">
+              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sophie Martin">
+            </div>
+            <div class="author-info">
+              <h4>Sophie Martin</h4>
+              <p>Anniversary Celebration</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="slider-controls">
+        <div class="slider-dot active" data-slide="0"></div>
+        <div class="slider-dot" data-slide="1"></div>
+        <div class="slider-dot" data-slide="2"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESERVATION -->
+  <section class="reservation" id="reservation">
+    <div class="container">
+      <h2 class="section-title">Make a Reservation</h2>
+      <p class="section-subtitle">Book your table for an authentic Spanish dining experience.</p>
+      
+      <form class="reservation-form">
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" placeholder="Your Name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="tu.email@ejemplo.com" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="date">Date</label>
+          <input type="date" id="date" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="time">Time</label>
+          <select id="time" required>
+            <option value="" disabled selected>Select Time</option>
+            <option value="13:00">1:00 PM</option>
+            <option value="13:30">1:30 PM</option>
+            <option value="14:00">2:00 PM</option>
+            <option value="14:30">2:30 PM</option>
+            <option value="20:00">8:00 PM</option>
+            <option value="20:30">8:30 PM</option>
+            <option value="21:00">9:00 PM</option>
+            <option value="21:30">9:30 PM</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="guests">Number of Guests</label>
+          <select id="guests" required>
+            <option value="" disabled selected>Select</option>
+            <option value="1">1 Person</option>
+            <option value="2">2 People</option>
+            <option value="3">3 People</option>
+            <option value="4">4 People</option>
+            <option value="5">5 People</option>
+            <option value="6">6 People</option>
+            <option value="7">7+ People</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="tel" id="phone" placeholder="+34 123 456 789">
+        </div>
+        
+        <div class="form-group" style="grid-column: 1 / -1;">
+          <label for="special-requests">Special Requests (Optional)</label>
+          <input type="text" id="special-requests" placeholder="Allergies, celebrations, etc.">
+        </div>
+        
+        <button type="submit" class="btn" style="grid-column: 1 / -1; margin-top: 1rem;">Reserve Table</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTACT & HOURS -->
+  <section class="contact-section" id="contact">
+    <div class="container">
+      <h2 class="section-title">Visit Us</h2>
+      <p class="section-subtitle">We'd love to welcome you to Antic Pitarra in Barcelona's Gothic Quarter.</p>
+      
+      <div class="contact-container">
+        <div class="contact-info">
+          <h3>Get in Touch</h3>
+          <p>Have questions or special requests? Feel free to reach out to us.</p>
+          
+          <div class="contact-details">
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div class="contact-item-content">
+                <h4>Our Location</h4>
+                <p>Carrer dels Mercaders, 22<br>08003 Barcelona, Spain</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div class="contact-item-content">
+                <h4>Phone Number</h4>
+                <p>+34 93 317 30 16</p>
+              </div>
+            </div>
+            
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div class="contact-item-content">
+                <h4>Email Address</h4>
+                <p>info@anticpitarra.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="hours">
+          <h3>Opening Hours</h3>
+          <p>We're open for lunch and dinner service.</p>
+          
+          <ul class="hours-list">
+            <li>
+              <span class="day">Monday - Thursday</span>
+              <span>1:00 PM - 11:00 PM</span>
+            </li>
+            <li>
+              <span class="day">Friday - Saturday</span>
+              <span>1:00 PM - 12:00 AM</span>
+            </li>
+            <li>
+              <span class="day">Sunday</span>
+              <span>1:00 PM - 10:00 PM</span>
+            </li>
+            <li>
+              <span class="day">Kitchen Hours</span>
+              <span>Until 10:30 PM</span>
+            </li>
+          </ul>
+          
+          <div style="margin-top: 2rem;">
+            <h4>Location Information</h4>
+            <p>Located in the heart of the Gothic Quarter, just 5 minutes walk from Plaza Sant Jaume and Barcelona Cathedral.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-about">
+          <div class="footer-logo">
+            <i class="fas fa-wine-glass-alt"></i> Antic Pitarra
+          </div>
+          <p>Traditional Spanish cuisine in the heart of Barcelona's Gothic Quarter. Family recipes since 1920.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-tripadvisor"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home"><i class="fas fa-chevron-right"></i> Home</a></li>
+            <li><a href="#menu"><i class="fas fa-chevron-right"></i> Menu</a></li>
+            <li><a href="#about"><i class="fas fa-chevron-right"></i> Our Story</a></li>
+            <li><a href="#reservation"><i class="fas fa-chevron-right"></i> Reservations</a></li>
+            <li><a href="#contact"><i class="fas fa-chevron-right"></i> Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-newsletter">
+          <h4>Stay Updated</h4>
+          <p>Subscribe for seasonal menu updates and special events.</p>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" required>
+            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 1920-2023 Antic Pitarra. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--gold);"></i> by Forma Digital</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+    const navMenu = document.querySelector('nav ul');
+    
+    mobileMenuBtn.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      mobileMenuBtn.innerHTML = navMenu.classList.contains('active') 
+        ? '<i class="fas fa-times"></i>' 
+        : '<i class="fas fa-bars"></i>';
+    });
+    
+    // Close mobile menu when clicking a link
+    document.querySelectorAll('nav ul li a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        mobileMenuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+      });
+    });
+    
+    // Header scroll effect
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+    
+    // Menu category filtering
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const menuItems = document.querySelectorAll('.menu-item');
+    
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Remove active class from all buttons
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        // Add active class to clicked button
+        btn.classList.add('active');
+        
+        const category = btn.getAttribute('data-category');
+        
+        // Show/hide menu items based on category
+        menuItems.forEach(item => {
+          if (category === 'all' || item.getAttribute('data-category') === category) {
+            item.style.display = 'block';
+            setTimeout(() => {
+              item.classList.add('show');
+            }, 10);
+          } else {
+            item.style.display = 'none';
+            item.classList.remove('show');
+          }
+        });
+      });
+    });
+    
+    // Testimonial slider
+    const testimonials = document.querySelectorAll('.testimonial');
+    const dots = document.querySelectorAll('.slider-dot');
+    let currentSlide = 0;
+    
+    function showSlide(n) {
+      // Hide all testimonials
+      testimonials.forEach(testimonial => {
+        testimonial.classList.remove('active');
+      });
+      
+      // Remove active class from all dots
+      dots.forEach(dot => {
+        dot.classList.remove('active');
+      });
+      
+      // Update current slide index
+      currentSlide = n;
+      if (currentSlide >= testimonials.length) currentSlide = 0;
+      if (currentSlide < 0) currentSlide = testimonials.length - 1;
+      
+      // Show current slide and activate corresponding dot
+      testimonials[currentSlide].classList.add('active');
+      dots[currentSlide].classList.add('active');
+    }
+    
+    // Add click event to dots
+    dots.forEach((dot, index) => {
+      dot.addEventListener('click', () => {
+        showSlide(index);
+      });
+    });
+    
+    // Auto slide every 5 seconds
+    setInterval(() => {
+      showSlide(currentSlide + 1);
+    }, 5000);
+    
+    // Animate stats counter
+    const stats = document.querySelectorAll('.stat-number');
+    const observerOptions = {
+      threshold: 0.5
+    };
+    
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const stat = entry.target;
+          const target = parseInt(stat.getAttribute('data-target'));
+          let current = 0;
+          const increment = target / 100;
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              stat.textContent = target;
+              clearInterval(timer);
+            } else {
+              stat.textContent = Math.floor(current);
+            }
+          }, 20);
+          
+          // Stop observing once animated
+          statsObserver.unobserve(stat);
+        }
+      });
+    }, observerOptions);
+    
+    stats.forEach(stat => statsObserver.observe(stat));
+    
+    // Scroll animation for elements
+    const scrollObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+        }
+      });
+    }, { threshold: 0.1 });
+    
+    // Observe all feature cards and menu items
+    document.querySelectorAll('.feature-card, .menu-item').forEach(item => {
+      scrollObserver.observe(item);
+    });
+    
+    // Form submission
+    const reservationForm = document.querySelector('.reservation-form');
+    reservationForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('¡Gracias por tu reserva! Te contactaremos pronto para confirmar.');
+      reservationForm.reset();
+    });
+    
+    // Newsletter form
+    const newsletterForm = document.querySelector('.newsletter-form');
+    newsletterForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = newsletterForm.querySelector('input').value;
+      alert(`¡Gracias por suscribirte con ${email}! Recibirás nuestro próximo boletín pronto.`);
+      newsletterForm.reset();
+    });
+    
+    // Set minimum date for reservation to today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById('date').setAttribute('min', today);
+    
+    // Update copyright year
+    const currentYear = new Date().getFullYear();
+    document.querySelector('.copyright p').innerHTML = `&copy; 1920-${currentYear} Antic Pitarra. All rights reserved. | Designed with <i class="fas fa-heart" style="color: var(--gold);"></i> by Forma Digital`;
+  </script>
+
+</body>
+</html>
