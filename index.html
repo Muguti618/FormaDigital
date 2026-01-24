@@ -1,11 +1,10 @@
-no only projects, full code of the entire project, add a ripple click effect sabes, heres my full source code: <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="title">Forma Digital — Social Media & Web Design Agency</title>
+  <title>Forma Digital — Web & Software Development Agency</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
   <style>
     /* ===== GLOBAL STYLES ===== */
     :root {
@@ -17,9 +16,11 @@ no only projects, full code of the entire project, add a ripple click effect sab
       --off-white: #F0F0F0;
       --accent: #3B82F6;
       --accent-light: #60A5FA;
+      --accent-glow: rgba(59, 130, 246, 0.3);
       --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
       --glow: 0 0 20px rgba(59, 130, 246, 0.2);
+      --card-bg: rgba(20, 20, 20, 0.7);
     }
 
     * {
@@ -55,7 +56,7 @@ no only projects, full code of the entire project, add a ripple click effect sab
 
     section {
       padding: 100px 20px;
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
@@ -249,24 +250,9 @@ no only projects, full code of the entire project, add a ripple click effect sab
       width: 100%;
     }
 
-    /* language switcher */
-    .lang-switch {
-      display: inline-flex;
-      gap: 8px;
-      align-items: center;
-      background: transparent;
-      border: 1px solid rgba(255,255,255,0.04);
-      padding: 6px 10px;
-      border-radius: 6px;
-      cursor: pointer;
-      color: var(--off-white);
-      font-weight: 500;
-    }
-    .lang-switch img { width: 18px; height: 12px; display:inline-block; }
-
-    /* ===== HERO WITH ENHANCED BACKGROUND ===== */
+    /* ===== HERO WITH VISIBLE IMAGE ===== */
     .hero {
-      min-height: 85vh;
+      min-height: 100vh;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -282,23 +268,13 @@ no only projects, full code of the entire project, add a ripple click effect sab
       left: 0;
       width: 100%;
       height: 100%;
-      background-image: url('Images/FormaDigital.png');
+      background-image: url('images/FormaDigital.png');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
       z-index: 1;
-      opacity: 0.08; /* Reduced opacity */
-      transform: scale(1.05);
-      animation: subtleParallax 20s ease-in-out infinite alternate;
-    }
-
-    @keyframes subtleParallax {
-      0% {
-        transform: scale(1.05) translateY(0);
-      }
-      100% {
-        transform: scale(1.05) translateY(-20px);
-      }
+      opacity: 0.35; /* Increased visibility */
+      filter: brightness(0.8) contrast(1.1);
     }
 
     .hero::before {
@@ -308,9 +284,10 @@ no only projects, full code of the entire project, add a ripple click effect sab
       left: 0;
       width: 100%;
       height: 100%;
-      background: radial-gradient(circle at 50% 50%, 
-        rgba(17, 17, 17, 0.8) 0%,
-        rgba(10, 10, 10, 1) 70%);
+      background: linear-gradient(135deg, 
+        rgba(10, 10, 10, 0.85) 0%,
+        rgba(10, 10, 10, 0.75) 50%,
+        rgba(10, 10, 10, 0.9) 100%);
       z-index: 2;
     }
 
@@ -338,28 +315,33 @@ no only projects, full code of the entire project, add a ripple click effect sab
       color: var(--white);
       letter-spacing: -0.03em;
       line-height: 1.1;
-      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
     }
 
     .hero h1 .subtitle {
       display: block;
       font-size: 3rem;
       font-weight: 600;
-      color: var(--off-white);
+      color: var(--accent-light);
       margin-top: 10px;
-      opacity: 0.9;
+      opacity: 0.95;
+      text-shadow: 0 2px 15px rgba(0, 0, 0, 0.7);
     }
 
     .hero p {
       font-size: 1.25rem;
-      opacity: 0.85;
+      opacity: 0.95;
       margin-bottom: 40px;
       max-width: 600px;
       margin-left: auto;
       margin-right: auto;
       line-height: 1.8;
       font-weight: 400;
-      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.7);
+      background: rgba(10, 10, 10, 0.6);
+      padding: 15px 25px;
+      border-radius: 10px;
+      border-left: 3px solid var(--accent);
     }
 
     .scroll-cue {
@@ -386,28 +368,30 @@ no only projects, full code of the entire project, add a ripple click effect sab
     .scroll-cue i {
       font-size: 1.5rem;
       color: var(--accent);
-      opacity: 0.8;
+      opacity: 0.9;
     }
 
-    /* ===== SERVICES ===== */
+    /* ===== ENHANCED WHAT WE DO SECTION ===== */
     .services {
-      background: var(--dark-gray);
+      background: var(--black);
     }
 
-    .service-list {
+    .services-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin-top: 50px;
     }
 
     .service-card {
-      background: var(--black);
-      border: 1px solid var(--light-gray);
+      background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(20, 20, 20, 0.9));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
       padding: 50px 40px;
       transition: var(--transition);
       position: relative;
       overflow: hidden;
-      border-radius: 8px;
+      backdrop-filter: blur(10px);
     }
 
     .service-card::before {
@@ -417,7 +401,9 @@ no only projects, full code of the entire project, add a ripple click effect sab
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, transparent 100%);
+      background: linear-gradient(135deg, 
+        rgba(59, 130, 246, 0.1) 0%,
+        rgba(96, 165, 250, 0.05) 100%);
       z-index: 1;
       opacity: 0;
       transition: var(--transition);
@@ -428,187 +414,407 @@ no only projects, full code of the entire project, add a ripple click effect sab
     }
 
     .service-card:hover {
+      transform: translateY(-10px) scale(1.02);
       border-color: var(--accent);
-      transform: translateY(-10px);
-      box-shadow: var(--shadow);
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(59, 130, 246, 0.1);
     }
 
     .service-icon {
-      font-size: 2.5rem;
+      font-size: 3rem;
       margin-bottom: 25px;
       color: var(--accent);
       opacity: 0.9;
+      text-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
     }
 
     .service-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 16px;
+      font-size: 1.6rem;
+      margin-bottom: 20px;
       color: var(--white);
+      background: linear-gradient(135deg, #fff, var(--accent-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .service-card p {
-      opacity: 0.7;
+      opacity: 0.8;
+      line-height: 1.8;
+      margin-bottom: 25px;
+      font-size: 1.05rem;
+    }
+
+    .service-features {
+      list-style: none;
+      margin-top: 25px;
+    }
+
+    .service-features li {
+      padding: 8px 0;
+      padding-left: 28px;
+      position: relative;
+      opacity: 0.85;
+    }
+
+    .service-features li::before {
+      content: '✦';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: bold;
+    }
+
+    /* Color variations for service cards */
+    .service-card:nth-child(1) {
+      border-color: rgba(59, 130, 246, 0.3);
+    }
+    .service-card:nth-child(1):hover {
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(59, 130, 246, 0.15);
+    }
+
+    .service-card:nth-child(2) {
+      border-color: rgba(76, 175, 80, 0.3);
+    }
+    .service-card:nth-child(2):hover {
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(76, 175, 80, 0.15);
+    }
+    .service-card:nth-child(2) .service-icon {
+      color: #4CAF50;
+    }
+    .service-card:nth-child(2) h3 {
+      background: linear-gradient(135deg, #fff, #4CAF50);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .service-card:nth-child(3) {
+      border-color: rgba(255, 193, 7, 0.3);
+    }
+    .service-card:nth-child(3):hover {
+      box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 40px rgba(255, 193, 7, 0.15);
+    }
+    .service-card:nth-child(3) .service-icon {
+      color: #FFC107;
+    }
+    .service-card:nth-child(3) h3 {
+      background: linear-gradient(135deg, #fff, #FFC107);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* B2C Highlight */
+    .b2c-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #FFC107, #FF9800);
+      color: #000;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 700;
+      margin-left: 10px;
+      vertical-align: middle;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* ===== CUSTOM SOLUTIONS SECTION ===== */
+    .custom-solutions {
+      background: var(--dark-gray);
+      text-align: center;
+    }
+
+    .solutions-container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 60px;
+      background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(20, 20, 20, 0.9));
+      border-radius: 20px;
+      border: 1px solid rgba(59, 130, 246, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .solutions-container::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(59, 130, 246, 0.1) 0%, transparent 70%);
+      z-index: 1;
+    }
+
+    .solutions-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .solutions-content h3 {
+      font-size: 2.2rem;
+      margin-bottom: 20px;
+      color: var(--white);
+    }
+
+    .solutions-content p {
+      font-size: 1.1rem;
+      opacity: 0.8;
+      margin-bottom: 30px;
       line-height: 1.8;
     }
 
-    /* ===== PROJECTS ===== */
-    .project-list {
+    .solutions-features {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 25px;
+      margin: 40px 0;
     }
 
-    .project-card {
-      background: var(--dark-gray);
-      border: 1px solid var(--light-gray);
-      padding: 0;
+    .feature-item {
+      padding: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      border: 1px solid rgba(255, 255, 255, 0.1);
       transition: var(--transition);
-      overflow: hidden;
-      position: relative;
-      border-radius: 8px;
     }
 
-    .project-card:hover {
+    .feature-item:hover {
+      background: rgba(255, 255, 255, 0.08);
       border-color: var(--accent);
-      transform: translateY(-10px);
-      box-shadow: var(--shadow);
+      transform: translateY(-5px);
     }
 
-    .project-image {
-      height: 200px;
-      background: var(--medium-gray);
-      position: relative;
+    .feature-item i {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+
+    .feature-item h4 {
+      font-size: 1.2rem;
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+
+    /* ===== PREVIOUS WORK ===== */
+    .previous-work {
+      background: var(--black);
+    }
+
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 30px;
+      margin-bottom: 30px;
+    }
+
+    @media (max-width: 992px) {
+      .work-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .work-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .work-card {
+      background: var(--card-bg);
+      border: 1px solid var(--light-gray);
+      border-radius: 12px;
       overflow: hidden;
+      transition: var(--transition);
+      height: 320px;
+      position: relative;
+      cursor: pointer;
     }
 
-    .project-image::before {
+    .work-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
+    .work-image {
+      width: 100%;
+      height: 70%;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      transition: var(--transition);
+    }
+
+    .work-card:hover .work-image {
+      transform: scale(1.05);
+    }
+
+    .work-image::after {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(45deg, rgba(59, 130, 246, 0.1) 0%, rgba(59, 130, 246, 0) 100%);
+      background: linear-gradient(to bottom, transparent 30%, rgba(10, 10, 10, 0.95) 100%);
     }
 
-    .project-content {
-      padding: 40px;
+    .work-content {
+      padding: 20px;
+      height: 30%;
+      position: relative;
+      z-index: 2;
     }
 
-    .project-card h3 {
-      font-size: 1.4rem;
-      margin-bottom: 12px;
+    .work-content h3 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
       color: var(--white);
     }
 
-    .project-card p {
+    .work-content p {
       opacity: 0.7;
-      line-height: 1.8;
+      font-size: 0.9rem;
+      line-height: 1.5;
     }
 
-    /* ===== PRICING ===== */
-    .pricing {
-      background: var(--dark-gray);
-    }
-
-    .pricing-list {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 30px;
-    }
-
-    .pricing-card {
-      background: var(--black);
-      border: 1px solid var(--light-gray);
-      padding: 50px 40px;
-      transition: var(--transition);
-      text-align: center;
-      position: relative;
-      border-radius: 8px;
-    }
-
-    .pricing-card.featured {
-      border-color: var(--accent);
-      transform: scale(1.05);
-      box-shadow: var(--glow);
-    }
-
-    .pricing-card:hover {
-      border-color: var(--accent);
-      transform: translateY(-10px);
-      box-shadow: var(--shadow);
-    }
-
-    .pricing-card.featured:hover {
-      transform: scale(1.05) translateY(-10px);
-    }
-
-    .pricing-card h3 {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      color: var(--white);
-    }
-
-    .price {
-      font-size: 3rem;
-      font-weight: 700;
-      margin: 30px 0;
-      color: var(--accent);
-      display: flex;
-      align-items: flex-start;
-      justify-content: center;
-      gap: 5px;
-    }
-
-    .price span {
-      font-size: 1rem;
-      font-weight: 400;
-      opacity: 0.7;
-      margin-top: 10px;
-      color: var(--off-white);
-    }
-
-    .pricing-features {
-      list-style: none;
-      margin: 30px 0;
-      text-align: left;
-    }
-
-    .pricing-features li {
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-      opacity: 0.8;
-      position: relative;
-      padding-left: 25px;
-    }
-
-    .pricing-features li::before {
-      content: '✓';
+    .work-badge {
       position: absolute;
-      left: 0;
-      color: var(--accent);
+      top: 15px;
+      right: 15px;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 5px 12px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+      z-index: 3;
+    }
+
+    /* Individual project colors */
+    .cafe-bistro {
+      border-color: rgba(76, 175, 80, 0.3);
+    }
+    .cafe-bistro:hover {
+      border-color: #4CAF50;
+      box-shadow: 0 20px 40px rgba(76, 175, 80, 0.2);
+    }
+    .cafe-bistro .work-image {
+      background-image: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    }
+    .cafe-bistro .work-badge {
+      background: #4CAF50;
+      color: white;
+    }
+
+    .anticafe {
+      border-color: rgba(255, 87, 34, 0.3);
+    }
+    .anticafe:hover {
+      border-color: #FF5722;
+      box-shadow: 0 20px 40px rgba(255, 87, 34, 0.2);
+    }
+    .anticafe .work-image {
+      background-image: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    }
+    .anticafe .work-badge {
+      background: #FF5722;
+      color: white;
+    }
+
+    .italian-restaurant {
+      border-color: rgba(233, 30, 99, 0.3);
+    }
+    .italian-restaurant:hover {
+      border-color: #E91E63;
+      box-shadow: 0 20px 40px rgba(233, 30, 99, 0.2);
+    }
+    .italian-restaurant .work-image {
+      background-image: url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    }
+    .italian-restaurant .work-badge {
+      background: #E91E63;
+      color: white;
+    }
+
+    .landscaping {
+      border-color: rgba(76, 175, 80, 0.3);
+    }
+    .landscaping:hover {
+      border-color: #2E7D32;
+      box-shadow: 0 20px 40px rgba(46, 125, 50, 0.2);
+    }
+    .landscaping .work-image {
+      background-image: url('https://images.unsplash.com/photo-1416879595882-3373a0480b5b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    }
+    .landscaping .work-badge {
+      background: #2E7D32;
+      color: white;
+    }
+
+    .water-bottle {
+      border-color: rgba(33, 150, 243, 0.3);
+    }
+    .water-bottle:hover {
+      border-color: #2196F3;
+      box-shadow: 0 20px 40px rgba(33, 150, 243, 0.2);
+    }
+    .water-bottle .work-image {
+      background-image: url('https://images.unsplash.com/photo-1523362628745-0c100150b504?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    }
+    .water-bottle .work-badge {
+      background: #2196F3;
+      color: white;
+    }
+
+    .weightloss-app {
+      border-color: rgba(156, 39, 176, 0.3);
+    }
+    .weightloss-app:hover {
+      border-color: #9C27B0;
+      box-shadow: 0 20px 40px rgba(156, 39, 176, 0.2);
+    }
+    .weightloss-app .work-image {
+      background-image: url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');
+    }
+    .weightloss-app .work-badge {
+      background: #9C27B0;
+      color: white;
     }
 
     /* ===== TESTIMONIALS ===== */
+    .testimonials {
+      background: var(--dark-gray);
+    }
+
     .testimonial-list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
       gap: 30px;
     }
 
     .testimonial {
-      background: var(--dark-gray);
-      border: 1px solid var(--light-gray);
+      background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(20, 20, 20, 0.9));
+      border: 1px solid rgba(255, 255, 255, 0.1);
       padding: 50px 40px;
       transition: var(--transition);
       position: relative;
-      border-radius: 8px;
+      border-radius: 16px;
+      backdrop-filter: blur(10px);
     }
 
     .testimonial:hover {
       border-color: var(--accent);
       transform: translateY(-10px);
-      box-shadow: var(--shadow);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
     }
 
     .testimonial::before {
@@ -638,15 +844,18 @@ no only projects, full code of the entire project, add a ripple click effect sab
     }
 
     .author-avatar {
-      width: 50px;
-      height: 50px;
+      width: 60px;
+      height: 60px;
       border-radius: 50%;
-      background: linear-gradient(135deg, var(--accent), var(--accent-light));
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
-      color: var(--white);
+      overflow: hidden;
+      flex-shrink: 0;
+      border: 2px solid var(--accent);
+    }
+
+    .author-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
     .author-info h4 {
@@ -663,7 +872,7 @@ no only projects, full code of the entire project, add a ripple click effect sab
     /* ===== CONTACT ===== */
     .contact {
       text-align: center;
-      background: var(--dark-gray);
+      background: var(--black);
     }
 
     .contact-info {
@@ -700,12 +909,100 @@ no only projects, full code of the entire project, add a ripple click effect sab
       width: 100%;
     }
 
-    /* ===== FOOTER ===== */
+    /* ===== ENHANCED FOOTER ===== */
     footer {
-      padding: 60px 20px;
+      background: var(--dark-gray);
+      padding: 80px 20px 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      margin-bottom: 50px;
+    }
+
+    @media (max-width: 992px) {
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    .footer-column h3 {
+      font-size: 1.3rem;
+      margin-bottom: 25px;
+      color: var(--white);
+      position: relative;
+      display: inline-block;
+    }
+
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 12px;
+    }
+
+    .footer-links a {
+      opacity: 0.7;
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      color: var(--accent);
+      padding-left: 5px;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.05);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition);
+    }
+
+    .social-link:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .footer-bottom {
       text-align: center;
-      opacity: 0.5;
-      border-top: 1px solid var(--light-gray);
+      padding-top: 40px;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      opacity: 0.6;
       font-size: 0.9rem;
     }
 
@@ -749,16 +1046,8 @@ no only projects, full code of the entire project, add a ripple click effect sab
         font-size: 2.2rem;
       }
       
-      .pricing-card.featured {
-        transform: none;
-      }
-      
-      .pricing-card.featured:hover {
-        transform: translateY(-10px);
-      }
-      
-      .hero-bg {
-        animation: none;
+      .services-grid {
+        grid-template-columns: 1fr;
       }
     }
 
@@ -776,7 +1065,7 @@ no only projects, full code of the entire project, add a ripple click effect sab
       }
       
       .hero {
-        min-height: 75vh;
+        min-height: 90vh;
         padding: 100px 20px 60px;
       }
       
@@ -800,8 +1089,12 @@ no only projects, full code of the entire project, add a ripple click effect sab
         font-size: 2rem;
       }
       
-      .service-card, .project-content, .pricing-card, .testimonial {
+      .service-card, .work-content, .testimonial {
         padding: 30px 25px;
+      }
+      
+      .solutions-container {
+        padding: 40px 25px;
       }
     }
 
@@ -826,87 +1119,32 @@ no only projects, full code of the entire project, add a ripple click effect sab
         padding: 16px 30px;
       }
     }
-
-    /* language popup small adjustments */
-    #language-popup {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.85);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 2001;
-    }
-    #language-popup .popup-box {
-      background: #111;
-      padding: 36px;
-      border-radius: 10px;
-      text-align: center;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-    #language-popup .popup-box h3 {
-      color: var(--white);
-      margin-bottom: 18px;
-    }
-    #language-popup .lang-btn {
-      padding: 10px 18px;
-      margin: 8px;
-      border-radius: 6px;
-      border: 1px solid rgba(255,255,255,0.06);
-      background: linear-gradient(180deg, rgba(255,255,255,0.02), transparent);
-      color: var(--off-white);
-      cursor: pointer;
-      font-weight: 600;
-    }
-    #language-popup .lang-btn:hover { transform: translateY(-3px); }
-
   </style>
 </head>
 
 <body>
-
-  <!-- LANGUAGE POPUP -->
-  <div id="language-popup" aria-hidden="false">
-    <div class="popup-box" role="dialog" aria-label="Choose language">
-      <h3 data-i18n="chooseLanguage">Choose your language</h3>
-      <div>
-        <button class="lang-btn" onclick="setLanguage('en')">English</button>
-        <button class="lang-btn" onclick="setLanguage('es')">Español</button>
-      </div>
-      <p style="margin-top:12px; opacity:0.75; font-size:0.95rem;" data-i18n="popupNote">You can change language later in the top-right.</p>
-    </div>
-  </div>
-
   <!-- NAV -->
   <nav class="navbar" id="navbar">
     <div class="logo">Forma Digital</div>
     <div class="nav-links">
-      <a href="#services" data-i18n="navServices">Services</a>
-      <a href="#projects" data-i18n="navWork">Work</a>
-      <a href="#pricing" data-i18n="navPricing">Pricing</a>
-      <a href="#testimonials" data-i18n="navReviews">Reviews</a>
-      <a href="#contact" data-i18n="navContact">Contact</a>
-      <!-- language switcher -->
-      <div class="lang-switch" id="nav-lang" title="Change language" onclick="toggleLangMenu(event)">
-        <span id="nav-lang-label">EN</span>
-        <div id="lang-menu" style="display:none; position:absolute; right:40px; margin-top:46px;">
-          <!-- menu rendered by JS if needed -->
-        </div>
-      </div>
+      <a href="#services">What We Do</a>
+      <a href="#previous-work">Our Work</a>
+      <a href="#custom">Solutions</a>
+      <a href="#testimonials">Reviews</a>
+      <a href="#contact">Contact</a>
     </div>
   </nav>
 
-  <!-- HERO -->
+  <!-- HERO WITH VISIBLE IMAGE -->
   <header class="hero">
-    <!-- Enhanced Background Image -->
     <div class="hero-bg"></div>
     
     <div class="hero-content">
-      <h1><span data-i18n="heroLine1">Build Your Brand</span>
-        <span class="subtitle" data-i18n="heroSubtitle">Dominate Online.</span>
+      <h1><span>Build Your Digital</span>
+        <span class="subtitle">Software & Web Solutions</span>
       </h1>
-      <p data-i18n="heroParagraph">Barcelona-based Social Media & Web Design Agency helping businesses scale with content, design, and strategy.</p>
-      <a href="#contact" class="btn"><span data-i18n="ctaContact">Get a Free Consultation</span></a>
+      <p>UK-based Web & Software Development Agency specializing in B2B and B2C applications, web apps, and custom business solutions.</p>
+      <a href="#contact" class="btn"><span>Get a Free Consultation</span></a>
     </div>
     
     <!-- Scroll Cue -->
@@ -915,127 +1153,164 @@ no only projects, full code of the entire project, add a ripple click effect sab
     </div>
   </header>
 
-  <!-- SERVICES -->
+  <!-- ENHANCED WHAT WE DO SECTION -->
   <section id="services" class="services">
     <div class="section-header fade-in">
-      <h2 data-i18n="servicesTitle">What We Do</h2>
-      <p data-i18n="servicesDesc">Comprehensive digital solutions to elevate your brand's online presence</p>
+      <h2>What We Do</h2>
+      <p>Comprehensive web and software development solutions that drive business growth</p>
     </div>
 
-    <div class="service-list">
+    <div class="services-grid">
       <div class="service-card fade-in">
         <div class="service-icon">
-          <i class="fas fa-hashtag"></i>
+          <i class="fas fa-laptop-code"></i>
         </div>
-        <h3 data-i18n="svc1Title">Social Media Management</h3>
-        <p data-i18n="svc1Desc">We manage, grow, and optimize your social media presence with full strategy, content creation, and community management.</p>
+        <h3>Website Development</h3>
+        <p>Custom, responsive websites built with modern frameworks, optimized for performance and SEO to drive conversions and user engagement.</p>
+        <ul class="service-features">
+          <li>Custom Design & Development</li>
+          <li>Mobile-First Responsive Design</li>
+          <li>SEO Optimization</li>
+          <li>Performance Optimization</li>
+          <li>Content Management Systems</li>
+        </ul>
       </div>
 
-   <div class="service-card fade-in" onclick="location.href='DarkThemeSite.html'" style="cursor: pointer;">
-  <div class="service-icon">
-    <i class="fas fa-laptop-code"></i>
-  </div>
-  <h3 data-i18n="svc2Title">Website Design</h3>
-  <p data-i18n="svc2Desc">Modern, fast, and conversion-focused websites built 
-      with the latest technologies and user experience principles.</p>
-</div>
-
+      <div class="service-card fade-in">
+        <div class="service-icon">
+          <i class="fas fa-mobile-alt"></i>
+        </div>
+        <h3>Software Development</h3>
+        <p>B2B and B2C software solutions including custom web applications, SaaS platforms, and business automation tools tailored to your needs.</p>
+        <ul class="service-features">
+          <li>Custom Web Applications</li>
+          <li>SaaS Platform Development</li>
+          <li>Business Process Automation</li>
+          <li>Database Design & Management</li>
+          <li>Maintenance & Updates</li>
+        </ul>
+      </div>
 
       <div class="service-card fade-in">
         <div class="service-icon">
-          <i class="fas fa-palette"></i>
+          <i class="fas fa-chart-line"></i>
         </div>
-        <h3 data-i18n="svc3Title">Brand Identity</h3>
-        <p data-i18n="svc3Desc">Complete branding solutions including logos, color systems, typography, and cohesive visual direction across all platforms.</p>
+        <h3>B2C Products <span class="b2c-badge">We Own</span></h3>
+        <p>Direct-to-consumer software products and applications that generate recurring revenue streams for our business portfolio.</p>
+        <ul class="service-features">
+          <li>Subscription-based Applications</li>
+          <li>Mobile Apps & Web Platforms</li>
+          <li>Monetization Strategy</li>
+          <li>User Acquisition & Growth</li>
+          <li>Revenue Optimization</li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section id="projects" class="projects">
+  <!-- CUSTOM SOLUTIONS SECTION -->
+  <section id="custom" class="custom-solutions">
     <div class="section-header fade-in">
-      <h2 data-i18n="projectsTitle">Our Work</h2>
-      <p data-i18n="projectsDesc">Recent projects that showcase our digital expertise and creative approach</p>
+      <h2>Custom Solutions</h2>
+      <p>Tailored development solutions for your unique business needs</p>
     </div>
 
-    <div class="project-list">
-      <div class="project-card fade-in">
-        <div class="project-image"></div>
-        <div class="project-content">
-          <h3 data-i18n="proj1Title">Social Growth Case Study</h3>
-          <p data-i18n="proj1Desc">0 → 10,000 followers in 60 days with strategic content planning, consistent branding, and data-driven optimization.</p>
+    <div class="solutions-container fade-in">
+      <div class="solutions-content">
+        <h3>Custom Pricing for Every Project</h3>
+        <p>We believe every business is unique, which is why we offer custom pricing based on your specific requirements. Whether you need a simple website or a complex software solution, we'll work with you to create a package that fits your budget and goals.</p>
+        
+        <div class="solutions-features">
+          <div class="feature-item">
+            <i class="fas fa-comments-dollar"></i>
+            <h4>Free Consultation</h4>
+            <p>Discuss your project needs and get a custom quote</p>
+          </div>
+          
+          <div class="feature-item">
+            <i class="fas fa-tasks"></i>
+            <h4>Project Analysis</h4>
+            <p>Detailed requirements and scope definition</p>
+          </div>
+          
+          <div class="feature-item">
+            <i class="fas fa-handshake"></i>
+            <h4>Transparent Pricing</h4>
+            <p>Clear breakdown of costs and deliverables</p>
+          </div>
         </div>
-      </div>
-
-<a href="DarkThemeSite.html" class="service-link">
-  <div class="service-card fade-in">
-    <div class="service-icon">
-      <i class="fas fa-laptop-code"></i> 
-      <!-- your image/icon stays exactly the same -->
-    </div>
-    <h3 data-i18n="svc2Title">Website Design</h3>
-    <p data-i18n="svc2Desc">
-      Modern, fast, and conversion-focused websites built with the latest technologies and user experience principles.
-    </p>
-  </div>
-</a>
-
-
-
-      <div class="project-card fade-in">
-        <div class="project-image"></div>
-        <div class="project-content">
-          <h3 data-i18n="proj3Title">Restaurant Branding</h3>
-          <p data-i18n="proj3Desc">Complete visual identity for a Barcelona restaurant including logo, menu design, and social media presence.</p>
-        </div>
+        
+        <a href="#contact" class="btn"><span>Get Your Custom Quote</span></a>
       </div>
     </div>
   </section>
 
-  <!-- PRICING -->
-  <section id="pricing" class="pricing">
+  <!-- PREVIOUS WORK -->
+  <section id="previous-work" class="previous-work">
     <div class="section-header fade-in">
-      <h2 data-i18n="pricingTitle">Pricing</h2>
-      <p data-i18n="pricingDesc">Transparent pricing plans tailored to businesses of all sizes</p>
+      <h2>Our Work</h2>
+      <p>Showcasing our expertise in web development across various industries</p>
     </div>
 
-    <div class="pricing-list">
-      <div class="pricing-card fade-in">
-        <h3 data-i18n="priceStarterTitle">Starter</h3>
-        <div class="price">€300<span>/month</span></div>
-        <ul class="pricing-features">
-          <li data-i18n="priceStarterFeat1">8 Social Media Posts</li>
-          <li data-i18n="priceStarterFeat2">Basic Content Creation</li>
-          <li data-i18n="priceStarterFeat3">Monthly Performance Report</li>
-          <li data-i18n="priceStarterFeat4">Email Support</li>
-        </ul>
-        <a href="#contact" class="btn"><span data-i18n="priceStarterBtn">Get Started</span></a>
+    <div class="work-grid">
+      <!-- Cafe Bistro (Green Theme) -->
+      <a href="DarkThemeSite.html" class="work-card fade-in cafe-bistro">
+        <div class="work-image"></div>
+        <div class="work-badge">CAFE</div>
+        <div class="work-content">
+          <h3>Verde Bistro Cafe</h3>
+          <p>Green-themed cafe website with online ordering, menu display, and reservation system.</p>
+        </div>
+      </a>
+
+      <!-- Anticafe -->
+      <a href="anticpitarra.html" class="work-card fade-in anticafe">
+        <div class="work-image"></div>
+        <div class="work-badge">CAFE</div>
+        <div class="work-content">
+          <h3>Antic Pitarra</h3>
+          <p>Vintage-themed cafe website with warm colors, photo gallery, and event booking system.</p>
+        </div>
+      </a>
+
+      <!-- Italian Restaurant -->
+      <div class="work-card fade-in italian-restaurant">
+        <div class="work-image"></div>
+        <div class="work-badge">RESTAURANT</div>
+        <div class="work-content">
+          <h3>Bella Napoli</h3>
+          <p>Italian restaurant website with vibrant red accents, online table booking, and menu showcase.</p>
+        </div>
       </div>
 
-      <div class="pricing-card featured fade-in">
-        <h3 data-i18n="priceBusinessTitle">Business</h3>
-        <div class="price">€550<span>/month</span></div>
-        <ul class="pricing-features">
-          <li data-i18n="priceBusinessFeat1">12 Social Media Posts</li>
-          <li data-i18n="priceBusinessFeat2">Reels & Video Content</li>
-          <li data-i18n="priceBusinessFeat3">Full Strategy & Reporting</li>
-          <li data-i18n="priceBusinessFeat4">Community Management</li>
-          <li data-i18n="priceBusinessFeat5">Priority Support</li>
-        </ul>
-        <a href="#contact" class="btn"><span data-i18n="priceBusinessBtn">Most Popular</span></a>
+      <!-- Landscaping Service -->
+      <div class="work-card fade-in landscaping">
+        <div class="work-image"></div>
+        <div class="work-badge">SERVICE</div>
+        <div class="work-content">
+          <h3>GreenThumb Landscaping</h3>
+          <p>Professional landscaping service website with portfolio gallery and service packages.</p>
+        </div>
       </div>
 
-      <div class="pricing-card fade-in">
-        <h3 data-i18n="priceEliteTitle">Elite</h3>
-        <div class="price">€900<span>/month</span></div>
-        <ul class="pricing-features">
-          <li data-i18n="priceEliteFeat1">20 Social Media Posts</li>
-          <li data-i18n="priceEliteFeat2">Complete Management</li>
-          <li data-i18n="priceEliteFeat3">Paid Ads Strategy</li>
-          <li data-i18n="priceEliteFeat4">Weekly Strategy Calls</li>
-          <li data-i18n="priceEliteFeat5">24/7 Premium Support</li>
-        </ul>
-        <a href="#contact" class="btn"><span data-i18n="priceEliteBtn">Go Elite</span></a>
+      <!-- Water Bottle Business -->
+      <div class="work-card fade-in water-bottle">
+        <div class="work-image"></div>
+        <div class="work-badge">ECO PRODUCTS</div>
+        <div class="work-content">
+          <h3>AquaPure Bottles</h3>
+          <p>Eco-friendly water bottle e-commerce site with product customization and subscription options.</p>
+        </div>
+      </div>
+
+      <!-- Weight Loss Web App -->
+      <div class="work-card fade-in weightloss-app">
+        <div class="work-image"></div>
+        <div class="work-badge">WEB APP</div>
+        <div class="work-content">
+          <h3>FitTrack Pro</h3>
+          <p>Weight loss web application with progress tracking, meal planning, and workout schedules.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -1043,40 +1318,46 @@ no only projects, full code of the entire project, add a ripple click effect sab
   <!-- TESTIMONIALS -->
   <section id="testimonials" class="testimonials">
     <div class="section-header fade-in">
-      <h2 data-i18n="testimonialsTitle">Client Reviews</h2>
-      <p data-i18n="testimonialsDesc">What our clients say about working with Forma Digital</p>
+      <h2>Client Reviews</h2>
+      <p>What our clients say about working with Forma Digital</p>
     </div>
 
     <div class="testimonial-list">
       <div class="testimonial fade-in">
-        <p data-i18n="test1Text">Forma Digital grew our Instagram faster than any agency we've worked with. Their strategic approach delivered measurable results that exceeded our expectations.</p>
+        <p>"Forma Digital built our custom inventory management system that saved us 20+ hours per week. Their attention to detail and understanding of our business needs was exceptional."</p>
         <div class="testimonial-author">
-          <div class="author-avatar">E</div>
+          <div class="author-avatar">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="James Wilson">
+          </div>
           <div class="author-info">
-            <h4>Elena Rodriguez</h4>
-            <p data-i18n="test1Role">Café Owner, Barcelona</p>
+            <h4>James Wilson</h4>
+            <p>Operations Director, Manufacturing</p>
           </div>
         </div>
       </div>
 
       <div class="testimonial fade-in">
-        <p data-i18n="test2Text">The website they built for us increased our sales by 40% in the first quarter. Quality work, attention to detail, and excellent communication throughout the process.</p>
+        <p>"Our new website increased conversions by 65% in the first month. The team understood exactly what we needed and delivered beyond our expectations. Highly recommended!"</p>
         <div class="testimonial-author">
-          <div class="author-avatar">M</div>
+          <div class="author-avatar">
+            <img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Sarah Chen">
+          </div>
           <div class="author-info">
-            <h4>Miguel Santos</h4>
-            <p data-i18n="test2Role">E-commerce Brand Director</p>
+            <h4>Sarah Chen</h4>
+            <p>E-commerce Brand Owner</p>
           </div>
         </div>
       </div>
 
       <div class="testimonial fade-in">
-        <p data-i18n="test3Text">Professional, fast, and incredibly talented. They handle everything for our brand so we can focus on our core business. The ROI has been exceptional.</p>
+        <p>"The custom CRM they developed for our agency has streamlined our entire workflow. Professional, innovative, and great communicators throughout the project."</p>
         <div class="testimonial-author">
-          <div class="author-avatar">L</div>
+          <div class="author-avatar">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=200&q=80" alt="Michael Rodriguez">
+          </div>
           <div class="author-info">
-            <h4>Luis García</h4>
-            <p data-i18n="test3Role">Fitness Coach & Entrepreneur</p>
+            <h4>Michael Rodriguez</h4>
+            <p>Marketing Agency Founder</p>
           </div>
         </div>
       </div>
@@ -1086,226 +1367,80 @@ no only projects, full code of the entire project, add a ripple click effect sab
   <!-- CONTACT -->
   <section id="contact" class="contact">
     <div class="section-header fade-in">
-      <h2 data-i18n="contactTitle">Let's Work Together</h2>
-      <p data-i18n="contactDesc">Ready to elevate your digital presence? Get in touch for a free consultation.</p>
+      <h2>Let's Work Together</h2>
+      <p>Ready to build your digital solution? Get in touch for a free consultation.</p>
     </div>
 
     <div class="contact-info fade-in">
-      <p data-i18n="contactEmail">Email: <a href="mailto:hello@formadigital.com">mugutixcrea@gmail.com</a></p>
-      <p data-i18n="contactLocation">Based in Barcelona • Available Worldwide</p>
+      <p>Email: <a href="mailto:mugutixcrea@gmail.com">mugutixcrea@gmail.com</a></p>
+      <p>Based in the UK • Available Worldwide</p>
+      <p style="opacity: 0.7; font-size: 1rem;">Working in Belfast, Bilbao, Barcelona</p>
     </div>
 
-    <a href="mailto:hello@formadigital.com" class="btn fade-in"><span data-i18n="contactBtn">Contact Us Today</span></a>
+    <a href="mailto:mugutixcrea@gmail.com" class="btn fade-in"><span>Contact Us Today</span></a>
   </section>
 
-  <footer class="fade-in">
-    <p data-i18n="footerCopy">© 2025 Forma Digital. All rights reserved.</p>
+  <!-- ENHANCED FOOTER -->
+  <footer>
+    <div class="footer-content">
+      <div class="footer-column">
+        <h3>Forma Digital</h3>
+        <p style="opacity: 0.7; line-height: 1.6; margin-top: 15px;">
+          UK-based Web & Software Development Agency specializing in custom digital solutions for businesses.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+          <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Navigation</h3>
+        <ul class="footer-links">
+          <li><a href="#services">What We Do</a></li>
+          <li><a href="#previous-work">Our Work</a></li>
+          <li><a href="#custom">Solutions</a></li>
+          <li><a href="#testimonials">Reviews</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Services</h3>
+        <ul class="footer-links">
+          <li><a href="#services">Website Development</a></li>
+          <li><a href="#services">Software Development</a></li>
+          <li><a href="#services">B2C Products</a></li>
+          <li><a href="#custom">Custom Solutions</a></li>
+          <li><a href="#contact">Free Consultation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Company</h3>
+        <ul class="footer-links">
+          <li><a href="#contact">Career Opportunities</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#contact">Contact Us</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>© 2025 Forma Digital. All rights reserved. | Web & Software Development Agency</p>
+    </div>
   </footer>
 
   <script>
-    /* Translation dictionary */
-    const TRANSLATIONS = {
-      en: {
-        title: "Forma Digital — Social Media & Web Design Agency",
-        chooseLanguage: "Choose your language",
-        popupNote: "You can change language later in the top-right.",
-        navServices: "Services",
-        navWork: "Work",
-        navPricing: "Pricing",
-        navReviews: "Reviews",
-        navContact: "Contact",
-        heroLine1: "Build Your Brand",
-        heroSubtitle: "Dominate Online.",
-        heroParagraph: "Barcelona-based Social Media & Web Design Agency helping businesses scale with content, design, and strategy.",
-        ctaContact: "Get a Free Consultation",
-        servicesTitle: "What We Do",
-        servicesDesc: "Comprehensive digital solutions to elevate your brand's online presence",
-        svc1Title: "Social Media Management",
-        svc1Desc: "We manage, grow, and optimize your social media presence with full strategy, content creation, and community management.",
-        svc2Title: "Website Design",
-        svc2Desc: "Modern, fast, and conversion-focused websites built with the latest technologies and user experience principles.",
-        svc3Title: "Brand Identity",
-        svc3Desc: "Complete branding solutions including logos, color systems, typography, and cohesive visual direction across all platforms.",
-        projectsTitle: "Our Work",
-        projectsDesc: "Recent projects that showcase our digital expertise and creative approach",
-        proj1Title: "Social Growth Case Study",
-        proj1Desc: "0 → 10,000 followers in 60 days with strategic content planning, consistent branding, and data-driven optimization.",
-        proj2Title: "Brand Website",
-        proj2Desc: "Premium dark UI designed for maximum conversions, performance optimization, and seamless user experience.",
-        proj3Title: "Restaurant Branding",
-        proj3Desc: "Complete visual identity for a Barcelona restaurant including logo, menu design, and social media presence.",
-        pricingTitle: "Pricing",
-        pricingDesc: "Transparent pricing plans tailored to businesses of all sizes",
-        priceStarterTitle: "Starter",
-        priceStarterFeat1: "8 Social Media Posts",
-        priceStarterFeat2: "Basic Content Creation",
-        priceStarterFeat3: "Monthly Performance Report",
-        priceStarterFeat4: "Email Support",
-        priceStarterBtn: "Get Started",
-        priceBusinessTitle: "Business",
-        priceBusinessFeat1: "12 Social Media Posts",
-        priceBusinessFeat2: "Reels & Video Content",
-        priceBusinessFeat3: "Full Strategy & Reporting",
-        priceBusinessFeat4: "Community Management",
-        priceBusinessFeat5: "Priority Support",
-        priceBusinessBtn: "Most Popular",
-        priceEliteTitle: "Elite",
-        priceEliteFeat1: "20 Social Media Posts",
-        priceEliteFeat2: "Complete Management",
-        priceEliteFeat3: "Paid Ads Strategy",
-        priceEliteFeat4: "Weekly Strategy Calls",
-        priceEliteFeat5: "24/7 Premium Support",
-        priceEliteBtn: "Go Elite",
-        testimonialsTitle: "Client Reviews",
-        testimonialsDesc: "What our clients say about working with Forma Digital",
-        test1Text: "Forma Digital grew our Instagram faster than any agency we've worked with. Their strategic approach delivered measurable results that exceeded our expectations.",
-        test1Role: "Café Owner, Barcelona",
-        test2Text: "The website they built for us increased our sales by 40% in the first quarter. Quality work, attention to detail, and excellent communication throughout the process.",
-        test2Role: "E-commerce Brand Director",
-        test3Text: "Professional, fast, and incredibly talented. They handle everything for our brand so we can focus on our core business. The ROI has been exceptional.",
-        test3Role: "Fitness Coach & Entrepreneur",
-        contactTitle: "Let's Work Together",
-        contactDesc: "Ready to elevate your digital presence? Get in touch for a free consultation.",
-        contactEmail: "Email: <a href=\"mailto:hello@formadigital.com\">hello@formadigital.com</a>",
-        contactLocation: "Based in Barcelona • Available Worldwide",
-        contactBtn: "Contact Us Today",
-        footerCopy: "© 2025 Forma Digital. All rights reserved."
-      },
-      es: {
-        title: "Forma Digital — Agencia de Redes Sociales y Diseño Web",
-        chooseLanguage: "Elige tu idioma",
-        popupNote: "Puedes cambiar el idioma más tarde en la esquina superior derecha.",
-        navServices: "Servicios",
-        navWork: "Proyectos",
-        navPricing: "Precios",
-        navReviews: "Reseñas",
-        navContact: "Contacto",
-        heroLine1: "Haz Crecer Tu Marca",
-        heroSubtitle: "Domina Online.",
-        heroParagraph: "Agencia en Barcelona de Redes Sociales y Diseño Web que ayuda a empresas a escalar con contenido, diseño y estrategia.",
-        ctaContact: "Solicita una Consulta Gratis",
-        servicesTitle: "Qué Hacemos",
-        servicesDesc: "Soluciones digitales integrales para elevar la presencia online de tu marca",
-        svc1Title: "Gestión de Redes Sociales",
-        svc1Desc: "Gestionamos, hacemos crecer y optimizamos tu presencia en redes con estrategia, creación de contenido y gestión de comunidad.",
-        svc2Title: "Diseño Web",
-        svc2Desc: "Webs modernas, rápidas y enfocadas a la conversión con las últimas tecnologías y principios UX.",
-        svc3Title: "Identidad de Marca",
-        svc3Desc: "Soluciones completas de branding: logos, paletas, tipografías y dirección visual coherente en todas las plataformas.",
-        projectsTitle: "Nuestros Proyectos",
-        projectsDesc: "Proyectos recientes que muestran nuestra experiencia digital y enfoque creativo",
-        proj1Title: "Caso: Crecimiento Social",
-        proj1Desc: "0 → 10.000 seguidores en 60 días con planificación estratégica de contenido, branding consistente y optimización basada en datos.",
-        proj2Title: "Web de Marca",
-        proj2Desc: "Interfaz oscura premium diseñada para máximas conversiones, optimización de rendimiento y experiencia de usuario fluida.",
-        proj3Title: "Branding de Restaurante",
-        proj3Desc: "Identidad visual completa para un restaurante de Barcelona: logo, diseño de carta y presencia en redes.",
-        pricingTitle: "Precios",
-        pricingDesc: "Planes transparentes adaptados a empresas de todos los tamaños",
-        priceStarterTitle: "Starter",
-        priceStarterFeat1: "8 publicaciones en redes",
-        priceStarterFeat2: "Creación de contenido básica",
-        priceStarterFeat3: "Informe mensual de rendimiento",
-        priceStarterFeat4: "Soporte por email",
-        priceStarterBtn: "Empezar",
-        priceBusinessTitle: "Business",
-        priceBusinessFeat1: "12 publicaciones en redes",
-        priceBusinessFeat2: "Reels y contenido en vídeo",
-        priceBusinessFeat3: "Estrategia completa y reporting",
-        priceBusinessFeat4: "Gestión de comunidad",
-        priceBusinessFeat5: "Soporte prioritario",
-        priceBusinessBtn: "Más Popular",
-        priceEliteTitle: "Elite",
-        priceEliteFeat1: "20 publicaciones en redes",
-        priceEliteFeat2: "Gestión completa",
-        priceEliteFeat3: "Estrategia de anuncios pagados",
-        priceEliteFeat4: "Llamadas estratégicas semanales",
-        priceEliteFeat5: "Soporte premium 24/7",
-        priceEliteBtn: "Ir a Elite",
-        testimonialsTitle: "Reseñas de Clientes",
-        testimonialsDesc: "Lo que nuestros clientes dicen sobre trabajar con Forma Digital",
-        test1Text: "Forma Digital hizo crecer nuestro Instagram más rápido que cualquier agencia con la que hemos trabajado. Su enfoque estratégico entregó resultados medibles que superaron nuestras expectativas.",
-        test1Role: "Propietaria de Café, Barcelona",
-        test2Text: "La web que nos hicieron incrementó nuestras ventas un 40% en el primer trimestre. Trabajo de calidad, atención al detalle y comunicación excelente durante todo el proceso.",
-        test2Role: "Directora de Marca E-commerce",
-        test3Text: "Profesionales, rápidos e increíblemente talentosos. Se encargan de todo para nuestra marca y nos permiten centrarnos en nuestro negocio. El ROI ha sido excepcional.",
-        test3Role: "Entrenador y Emprendedor",
-        contactTitle: "Trabajemos Juntos",
-        contactDesc: "¿Listo para elevar tu presencia digital? Ponte en contacto para una consulta gratuita.",
-        contactEmail: "Email: <a href=\"mailto:hello@formadigital.com\">hello@formadigital.com</a>",
-        contactLocation: "Con sede en Barcelona • Disponibles en todo el mundo",
-        contactBtn: "Contacta Hoy",
-        footerCopy: "© 2025 Forma Digital. Todos los derechos reservados."
-      }
-    };
-
-    /* Utility: apply translations to all [data-i18n] elements */
-    function applyTranslations(lang) {
-      const dict = TRANSLATIONS[lang] || TRANSLATIONS.en;
-      document.querySelectorAll('[data-i18n]').forEach(el => {
-        const key = el.getAttribute('data-i18n');
-        if (key && dict[key] !== undefined) {
-          el.innerHTML = dict[key];
-        }
-      });
-      // update title attribute separately (document.title)
-      if (dict.title) document.title = dict.title;
-      // update html lang attribute
-      document.documentElement.lang = (lang === 'es') ? 'es' : 'en';
-      // update small nav label
-      const navLabel = document.getElementById('nav-lang-label');
-      if (navLabel) navLabel.textContent = (lang === 'es') ? 'ES' : 'EN';
-    }
-
-    /* Language selection logic:
-       - If saved preference -> use it (hide popup)
-       - Else try browser language (auto-detect)
-       - Else show popup
-    */
-    function setLanguage(lang) {
-      localStorage.setItem('preferredLanguage', lang);
-      applyTranslations(lang);
-      hideLanguagePopup();
-    }
-
-    function hideLanguagePopup() {
-      const popup = document.getElementById('language-popup');
-      if (popup) {
-        popup.style.display = 'none';
-        popup.setAttribute('aria-hidden', 'true');
-      }
-    }
-
-    function showLanguagePopup() {
-      const popup = document.getElementById('language-popup');
-      if (popup) {
-        popup.style.display = 'flex';
-        popup.setAttribute('aria-hidden', 'false');
-      }
-    }
-
-    /* toggle language menu (small) - quick switch without popup */
-    function toggleLangMenu(e) {
-      e.stopPropagation();
-      const current = localStorage.getItem('preferredLanguage') || detectBrowserLang();
-      const newLang = (current === 'es') ? 'en' : 'es';
-      setLanguage(newLang);
-    }
-
-    /* basic browser detection helper */
-    function detectBrowserLang() {
-      const nav = navigator.language || navigator.userLanguage || 'en';
-      if (nav.toLowerCase().startsWith('es')) return 'es';
-      return 'en';
-    }
-
-    /* Initialization on DOMContentLoaded */
     document.addEventListener('DOMContentLoaded', function() {
-      // existing scroll & animations code (kept intact below)
+      // Scroll animations
       const fadeElements = document.querySelectorAll('.fade-in');
       const navbar = document.getElementById('navbar');
-      const heroBg = document.querySelector('.hero-bg');
-
+      
       // Fade in elements on scroll
       const fadeInOnScroll = function() {
         fadeElements.forEach(element => {
@@ -1323,11 +1458,6 @@ no only projects, full code of the entire project, add a ripple click effect sab
         } else {
           navbar.classList.remove('scrolled');
         }
-
-        // Parallax effect on hero background
-        const scrolled = window.pageYOffset;
-        const rate = scrolled * -0.5;
-        if (heroBg) heroBg.style.transform = `scale(1.05) translateY(${rate}px)`;
       };
 
       // Initial check
@@ -1354,43 +1484,22 @@ no only projects, full code of the entire project, add a ripple click effect sab
         });
       });
 
-      // Preload hero background image for better performance
+      // Preload hero image
       const heroImg = new Image();
-      heroImg.src = 'Images/FormaDigital.png';
+      heroImg.src = 'images/FormaDigital.png';
       heroImg.onload = function() {
-        if (heroBg) {
-          heroBg.style.opacity = '8';
-          heroBg.style.transition = 'opacity 1s ease';
-        }
+        document.querySelector('.hero-bg').style.opacity = '0.35';
       };
-
-      // Language initialization:
-      const saved = localStorage.getItem('preferredLanguage');
-      if (saved) {
-        applyTranslations(saved);
-        hideLanguagePopup();
-      } else {
-        // try auto-detect
-        const detected = detectBrowserLang();
-        // Show popup but auto-select if we want to default to detected — here: show popup but prefill text
-        // Auto-apply detected language but still show popup so user explicitly confirms on first visit:
-        applyTranslations(detected);
-        // show popup to allow explicit choice (if you prefer auto-hide, call hideLanguagePopup instead)
-        showLanguagePopup();
-      }
-
-      // close popup on outside click? (optional)
-      document.addEventListener('click', function(e) {
-        const popup = document.getElementById('language-popup');
-        if (!popup) return;
-        const box = popup.querySelector('.popup-box');
-        if (box && !box.contains(e.target)) {
-          // do not hide — keep user explicit; comment this line if you want outside click to hide
-          // popup.style.display = 'none';
+      
+      // Fallback if image doesn't load
+      setTimeout(() => {
+        const heroBg = document.querySelector('.hero-bg');
+        if (heroBg.complete && heroImg.naturalWidth === 0) {
+          heroBg.style.backgroundImage = 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
+          heroBg.style.opacity = '0.6';
         }
-      });
-
-    }); // DOMContentLoaded end
+      }, 1000);
+    });
   </script>
 
 </body>
